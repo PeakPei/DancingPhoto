@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		480B404520FC401200268B94 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 480B404420FC401200268B94 /* AppDelegate.m */; };
 		480B404820FC401200268B94 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 480B404720FC401200268B94 /* RootViewController.m */; };
-		480B404B20FC401200268B94 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 480B404A20FC401200268B94 /* DataViewController.m */; };
 		480B404E20FC401200268B94 /* ModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 480B404D20FC401200268B94 /* ModelController.m */; };
 		480B405120FC401200268B94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 480B404F20FC401200268B94 /* Main.storyboard */; };
 		480B405320FC401500268B94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 480B405220FC401500268B94 /* Assets.xcassets */; };
 		480B405620FC401500268B94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 480B405420FC401500268B94 /* LaunchScreen.storyboard */; };
 		480B405920FC401500268B94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 480B405820FC401500268B94 /* main.m */; };
+		480B406620FC4ECF00268B94 /* DPLayoutFrameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 480B406520FC4ECF00268B94 /* DPLayoutFrameController.m */; };
+		480B406A20FC6B7600268B94 /* DPLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 480B406920FC6B7600268B94 /* DPLayoutViewController.m */; };
+		480B406E20FC72E200268B94 /* DPUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 480B406D20FC72E200268B94 /* DPUtil.m */; };
+		480B407120FC739800268B94 /* UIImage+ColorAtPixel.m in Sources */ = {isa = PBXBuildFile; fileRef = 480B407020FC739800268B94 /* UIImage+ColorAtPixel.m */; };
+		480B407420FC741B00268B94 /* UIView+ColorOfPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 480B407320FC741B00268B94 /* UIView+ColorOfPoint.m */; };
 		5FD9FCF272A94F959A5F077D /* libPods-DancingPhoto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF97A8C7A963FE5CDD11184 /* libPods-DancingPhoto.a */; };
 /* End PBXBuildFile section */
 
@@ -25,8 +29,6 @@
 		480B404420FC401200268B94 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		480B404620FC401200268B94 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		480B404720FC401200268B94 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		480B404920FC401200268B94 /* DataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
-		480B404A20FC401200268B94 /* DataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
 		480B404C20FC401200268B94 /* ModelController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelController.h; sourceTree = "<group>"; };
 		480B404D20FC401200268B94 /* ModelController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelController.m; sourceTree = "<group>"; };
 		480B405020FC401200268B94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -34,6 +36,17 @@
 		480B405520FC401500268B94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		480B405720FC401500268B94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		480B405820FC401500268B94 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		480B406420FC4ECF00268B94 /* DPLayoutFrameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLayoutFrameController.h; sourceTree = "<group>"; };
+		480B406520FC4ECF00268B94 /* DPLayoutFrameController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLayoutFrameController.m; sourceTree = "<group>"; };
+		480B406720FC6A9200268B94 /* DPLayoutPageProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLayoutPageProtocol.h; sourceTree = "<group>"; };
+		480B406820FC6B7600268B94 /* DPLayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPLayoutViewController.h; sourceTree = "<group>"; };
+		480B406920FC6B7600268B94 /* DPLayoutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPLayoutViewController.m; sourceTree = "<group>"; };
+		480B406C20FC72E200268B94 /* DPUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPUtil.h; sourceTree = "<group>"; };
+		480B406D20FC72E200268B94 /* DPUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPUtil.m; sourceTree = "<group>"; };
+		480B406F20FC739800268B94 /* UIImage+ColorAtPixel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorAtPixel.h"; sourceTree = "<group>"; };
+		480B407020FC739800268B94 /* UIImage+ColorAtPixel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorAtPixel.m"; sourceTree = "<group>"; };
+		480B407220FC741B00268B94 /* UIView+ColorOfPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ColorOfPoint.h"; sourceTree = "<group>"; };
+		480B407320FC741B00268B94 /* UIView+ColorOfPoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ColorOfPoint.m"; sourceTree = "<group>"; };
 		B0D58798E7F1C28CC9CAFF58 /* Pods-DancingPhoto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DancingPhoto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DancingPhoto/Pods-DancingPhoto.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF97A8C7A963FE5CDD11184 /* libPods-DancingPhoto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DancingPhoto.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -75,10 +88,10 @@
 				480B404420FC401200268B94 /* AppDelegate.m */,
 				480B404620FC401200268B94 /* RootViewController.h */,
 				480B404720FC401200268B94 /* RootViewController.m */,
-				480B404920FC401200268B94 /* DataViewController.h */,
-				480B404A20FC401200268B94 /* DataViewController.m */,
 				480B404C20FC401200268B94 /* ModelController.h */,
 				480B404D20FC401200268B94 /* ModelController.m */,
+				480B406B20FC72CC00268B94 /* Utils */,
+				480B406320FC4E3100268B94 /* LayoutPages */,
 				480B404F20FC401200268B94 /* Main.storyboard */,
 				480B405220FC401500268B94 /* Assets.xcassets */,
 				480B405420FC401500268B94 /* LaunchScreen.storyboard */,
@@ -102,6 +115,31 @@
 			children = (
 			);
 			path = resources;
+			sourceTree = "<group>";
+		};
+		480B406320FC4E3100268B94 /* LayoutPages */ = {
+			isa = PBXGroup;
+			children = (
+				480B406720FC6A9200268B94 /* DPLayoutPageProtocol.h */,
+				480B406820FC6B7600268B94 /* DPLayoutViewController.h */,
+				480B406920FC6B7600268B94 /* DPLayoutViewController.m */,
+				480B406420FC4ECF00268B94 /* DPLayoutFrameController.h */,
+				480B406520FC4ECF00268B94 /* DPLayoutFrameController.m */,
+			);
+			path = LayoutPages;
+			sourceTree = "<group>";
+		};
+		480B406B20FC72CC00268B94 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				480B406C20FC72E200268B94 /* DPUtil.h */,
+				480B406D20FC72E200268B94 /* DPUtil.m */,
+				480B406F20FC739800268B94 /* UIImage+ColorAtPixel.h */,
+				480B407020FC739800268B94 /* UIImage+ColorAtPixel.m */,
+				480B407220FC741B00268B94 /* UIView+ColorOfPoint.h */,
+				480B407320FC741B00268B94 /* UIView+ColorOfPoint.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		633B7D010886F74D03AF49C7 /* Pods */ = {
@@ -213,11 +251,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				480B407420FC741B00268B94 /* UIView+ColorOfPoint.m in Sources */,
 				480B405920FC401500268B94 /* main.m in Sources */,
 				480B404820FC401200268B94 /* RootViewController.m in Sources */,
+				480B406A20FC6B7600268B94 /* DPLayoutViewController.m in Sources */,
+				480B407120FC739800268B94 /* UIImage+ColorAtPixel.m in Sources */,
+				480B406E20FC72E200268B94 /* DPUtil.m in Sources */,
 				480B404E20FC401200268B94 /* ModelController.m in Sources */,
-				480B404B20FC401200268B94 /* DataViewController.m in Sources */,
 				480B404520FC401200268B94 /* AppDelegate.m in Sources */,
+				480B406620FC4ECF00268B94 /* DPLayoutFrameController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,9 +405,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5F3P75AV37;
-				INFOPLIST_FILE = DancingPhoto/Info.plist;
+				INFOPLIST_FILE = "DancingPhoto/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.hite.app.DancingPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -381,9 +426,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5F3P75AV37;
-				INFOPLIST_FILE = DancingPhoto/Info.plist;
+				INFOPLIST_FILE = "DancingPhoto/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.hite.app.DancingPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

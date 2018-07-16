@@ -7,8 +7,8 @@
 //
 
 #import "ModelController.h"
-#import "DataViewController.h"
-
+#import "DPLayoutViewController.h"
+#import "DPLayoutFrameController.h"
 /*
  A controller object that manages a simple model -- a collection of month names.
  
@@ -40,23 +40,28 @@ NSString * const kPageTypeMasonry = @"kPageTypeMasonry";
     return self;
 }
 
-- (DataViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard {
+- (DPLayoutViewController *)viewControllerAtIndex:(NSUInteger)index {
     // Return the data view controller for the given index.
     if (([self.pageData count] == 0) || (index >= [self.pageData count])) {
         return nil;
     }
 
     // Create a new view controller and pass suitable data.
-    DataViewController *dataViewController = [storyboard instantiateViewControllerWithIdentifier:@"DataViewController"];
-    dataViewController.dataObject = self.pageData[index];
-    return dataViewController;
+    NSString *pageType = self.pageData[index];
+    if (pageType == kPageTypeFrame) {
+        return [DPLayoutFrameController new];
+    }
+    
+    DPLayoutViewController *vc = [DPLayoutViewController new];
+    vc.pageType = pageType;
+    return vc;
 }
 
 
-- (NSUInteger)indexOfViewController:(DataViewController *)viewController {
+- (NSUInteger)indexOfViewController:(DPLayoutViewController *)viewController {
     // Return the index of the given data view controller.
     // For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
-    return [self.pageData indexOfObject:viewController.dataObject];
+    return [self.pageData indexOfObject:viewController.pageType];
 }
 
 
@@ -64,18 +69,18 @@ NSString * const kPageTypeMasonry = @"kPageTypeMasonry";
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    NSUInteger index = [self indexOfViewController:(DataViewController *)viewController];
+    NSUInteger index = [self indexOfViewController:(DPLayoutViewController *)viewController];
     if ((index == 0) || (index == NSNotFound)) {
         return nil;
     }
     
     index--;
-    return [self viewControllerAtIndex:index storyboard:viewController.storyboard];
+    return [self viewControllerAtIndex:index];
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    NSUInteger index = [self indexOfViewController:(DataViewController *)viewController];
+    NSUInteger index = [self indexOfViewController:(DPLayoutViewController *)viewController];
     if (index == NSNotFound) {
         return nil;
     }
@@ -84,7 +89,7 @@ NSString * const kPageTypeMasonry = @"kPageTypeMasonry";
     if (index == [self.pageData count]) {
         return nil;
     }
-    return [self viewControllerAtIndex:index storyboard:viewController.storyboard];
+    return [self viewControllerAtIndex:index];
 }
 
 @end

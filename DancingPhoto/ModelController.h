@@ -7,19 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
-// 定义 4 种不同的布局方式
-extern NSString * const kPageTypeFrame;
-extern NSString * const kPageTypeAnchor;
-extern NSString * const kPageTypeVFL;
-extern NSString * const kPageTypeMasonry;
-
-@class DataViewController;
+#import "DPLayoutViewController.h"
 
 @interface ModelController : NSObject <UIPageViewControllerDataSource>
 
-- (DataViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard;
-- (NSUInteger)indexOfViewController:(DataViewController *)viewController;
+- (DPLayoutViewController *)viewControllerAtIndex:(NSUInteger)index;
+
+- (NSUInteger)indexOfViewController:(DPLayoutViewController *)viewController;
 
 @end
 
