@@ -21,6 +21,8 @@ extern NSString * const kPageTypeMasonry;
 //获取设备的物理宽度
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 
+#define ONE_PIXEL (1 / [UIScreen mainScreen].scale)
+
 @protocol DPLayoutPageProtocol <NSObject>
 
 @property (nonatomic, strong) NSString *pageType;

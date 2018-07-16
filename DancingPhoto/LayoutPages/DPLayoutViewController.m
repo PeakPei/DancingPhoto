@@ -39,6 +39,8 @@
         matrix = [NSMutableArray arrayWithCapacity:200];
         
         UIImage *tron = [UIImage imageNamed:@"img-source"];
+        NSLog(@"开始处理了，有点慢先等等，图片尺寸是%@", NSStringFromCGSize(tron.size));
+        long long startTime = [[NSDate date] timeIntervalSince1970];
 
         UIImageView *imgView = [[UIImageView alloc] initWithImage:tron];
         imgView.contentMode = UIViewContentModeScaleAspectFit;
@@ -53,6 +55,8 @@
             }
             [matrix addObject:xColors];
         }
+        
+        NSLog(@"处理结束，耗时：%f", [[NSDate date] timeIntervalSince1970] - startTime);
     });
     
     return matrix;
