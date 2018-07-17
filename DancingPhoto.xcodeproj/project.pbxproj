@@ -19,6 +19,10 @@
 		480B406E20FC72E200268B94 /* DPUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 480B406D20FC72E200268B94 /* DPUtil.m */; };
 		480B407120FC739800268B94 /* UIImage+ColorAtPixel.m in Sources */ = {isa = PBXBuildFile; fileRef = 480B407020FC739800268B94 /* UIImage+ColorAtPixel.m */; };
 		480B407420FC741B00268B94 /* UIView+ColorOfPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 480B407320FC741B00268B94 /* UIView+ColorOfPoint.m */; };
+		480B407920FD844E00268B94 /* Derezzed-16432761.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 480B407820FD844E00268B94 /* Derezzed-16432761.mp3 */; };
+		480B407B20FD846200268B94 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 480B407A20FD846200268B94 /* AVFoundation.framework */; };
+		480B407E20FD94B100268B94 /* DPWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 480B407D20FD94B100268B94 /* DPWelcomeViewController.m */; };
+		480B408120FDBAF700268B94 /* SEFPS.m in Sources */ = {isa = PBXBuildFile; fileRef = 480B407F20FDBAF700268B94 /* SEFPS.m */; };
 		5FD9FCF272A94F959A5F077D /* libPods-DancingPhoto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF97A8C7A963FE5CDD11184 /* libPods-DancingPhoto.a */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +51,12 @@
 		480B407020FC739800268B94 /* UIImage+ColorAtPixel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorAtPixel.m"; sourceTree = "<group>"; };
 		480B407220FC741B00268B94 /* UIView+ColorOfPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ColorOfPoint.h"; sourceTree = "<group>"; };
 		480B407320FC741B00268B94 /* UIView+ColorOfPoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ColorOfPoint.m"; sourceTree = "<group>"; };
+		480B407820FD844E00268B94 /* Derezzed-16432761.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Derezzed-16432761.mp3"; sourceTree = "<group>"; };
+		480B407A20FD846200268B94 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		480B407C20FD94B100268B94 /* DPWelcomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPWelcomeViewController.h; sourceTree = "<group>"; };
+		480B407D20FD94B100268B94 /* DPWelcomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPWelcomeViewController.m; sourceTree = "<group>"; };
+		480B407F20FDBAF700268B94 /* SEFPS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SEFPS.m; sourceTree = "<group>"; };
+		480B408020FDBAF700268B94 /* SEFPS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SEFPS.h; sourceTree = "<group>"; };
 		B0D58798E7F1C28CC9CAFF58 /* Pods-DancingPhoto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DancingPhoto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DancingPhoto/Pods-DancingPhoto.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF97A8C7A963FE5CDD11184 /* libPods-DancingPhoto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DancingPhoto.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -56,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				480B407B20FD846200268B94 /* AVFoundation.framework in Frameworks */,
 				5FD9FCF272A94F959A5F077D /* libPods-DancingPhoto.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +101,8 @@
 				480B404720FC401200268B94 /* RootViewController.m */,
 				480B404C20FC401200268B94 /* ModelController.h */,
 				480B404D20FC401200268B94 /* ModelController.m */,
+				480B408020FDBAF700268B94 /* SEFPS.h */,
+				480B407F20FDBAF700268B94 /* SEFPS.m */,
 				480B406B20FC72CC00268B94 /* Utils */,
 				480B406320FC4E3100268B94 /* LayoutPages */,
 				480B404F20FC401200268B94 /* Main.storyboard */,
@@ -113,6 +126,7 @@
 		480B406220FC4C6500268B94 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				480B407820FD844E00268B94 /* Derezzed-16432761.mp3 */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -123,6 +137,8 @@
 				480B406720FC6A9200268B94 /* DPLayoutPageProtocol.h */,
 				480B406820FC6B7600268B94 /* DPLayoutViewController.h */,
 				480B406920FC6B7600268B94 /* DPLayoutViewController.m */,
+				480B407C20FD94B100268B94 /* DPWelcomeViewController.h */,
+				480B407D20FD94B100268B94 /* DPWelcomeViewController.m */,
 				480B406420FC4ECF00268B94 /* DPLayoutFrameController.h */,
 				480B406520FC4ECF00268B94 /* DPLayoutFrameController.m */,
 			);
@@ -154,6 +170,7 @@
 		6D21395893E6DBC5C0EABD37 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				480B407A20FD846200268B94 /* AVFoundation.framework */,
 				CAF97A8C7A963FE5CDD11184 /* libPods-DancingPhoto.a */,
 			);
 			name = Frameworks;
@@ -220,6 +237,7 @@
 				480B405620FC401500268B94 /* LaunchScreen.storyboard in Resources */,
 				480B405320FC401500268B94 /* Assets.xcassets in Resources */,
 				480B405120FC401200268B94 /* Main.storyboard in Resources */,
+				480B407920FD844E00268B94 /* Derezzed-16432761.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,10 +270,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				480B407420FC741B00268B94 /* UIView+ColorOfPoint.m in Sources */,
+				480B408120FDBAF700268B94 /* SEFPS.m in Sources */,
 				480B405920FC401500268B94 /* main.m in Sources */,
 				480B404820FC401200268B94 /* RootViewController.m in Sources */,
 				480B406A20FC6B7600268B94 /* DPLayoutViewController.m in Sources */,
 				480B407120FC739800268B94 /* UIImage+ColorAtPixel.m in Sources */,
+				480B407E20FD94B100268B94 /* DPWelcomeViewController.m in Sources */,
 				480B406E20FC72E200268B94 /* DPUtil.m in Sources */,
 				480B404E20FC401200268B94 /* ModelController.m in Sources */,
 				480B404520FC401200268B94 /* AppDelegate.m in Sources */,

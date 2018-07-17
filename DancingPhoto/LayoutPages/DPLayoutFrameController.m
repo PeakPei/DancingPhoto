@@ -51,6 +51,9 @@
             dot.frame = CGRectMake(xStartOffset + (xGap + xStep) * i, yStartOffset + yIdx * (yStep + yGap), xStep, yStep);
             
             dot.backgroundColor = [xColors objectAtIndex:i];
+            // 用投机取巧的方式保存最原始的 center；
+            dot.accessibilityValue = [NSString stringWithFormat:@"%f-%f", dot.center.x, dot.center.y];
+            
             [dots addObject:dot];
             
             [self.view addSubview:dot];
@@ -59,26 +62,44 @@
     
     NSLog(@"画图结束，耗时：%f", [[NSDate date] timeIntervalSince1970] - startTime);
     
-    //  播放按钮
-    UIButton *play = [UIButton new];
-    [play setTitle:@"播放动画" forState:UIControlStateNormal];
-    [play setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-    play.frame = CGRectMake(15, 80, 0, 0);
-    [play sizeToFit];
-    [self.view addSubview:play];
-    
-    [play addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
+//    //  播放按钮
+//    UIButton *play = [UIButton new];
+//    [play setTitle:@"播放动画" forState:UIControlStateNormal];
+//    [play setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+//    play.backgroundColor = [UIColor whiteColor];
+//    play.frame = CGRectMake(15, 80, 0, 0);
+//    [play sizeToFit];
+//    [self.view addSubview:play];
+//
+//    [play addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - event
 
 - (void)play:(id)sender
 {
-    CGFloat amplitudeDistance = 2.f;
-    [self.dots enumerateObjectsUsingBlock:^(UIView * _Nonnull dot, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self startWave];
+}
+
+static NSInteger kActiveGroupSize = 200;
+static NSInteger kActiveOffset = 0;
+- (void)onMusicPowerChange:(float)average peak:(float)peak
+{
+    
+    CGFloat amplitudeDistance = 20.f;
+    kActiveOffset += kActiveGroupSize;
+    NSInteger len = self.dots.count;
+    
+    NSInteger offset = kActiveOffset % len;
+    kActiveOffset = offset;
+    
+    [[self.dots subarrayWithRange:NSMakeRange(offset, MIN(kActiveGroupSize, len - offset))]  enumerateObjectsUsingBlock:^(UIView * _Nonnull dot, NSUInteger idx, BOOL * _Nonnull stop) {
        // 只做 y 轴上的震荡
-        CGPoint old = dot.center;
-        dot.center = CGPointMake(old.x, old.y + amplitudeDistance * sin(idx));
+        NSArray *accArr = [dot.accessibilityValue componentsSeparatedByString:@"-"];
+        if (accArr.count == 2) {
+            CGPoint original = CGPointMake([[accArr firstObject] floatValue], [[accArr lastObject] floatValue]);
+            dot.center = CGPointMake(original.x, original.y + amplitudeDistance * peak);
+        }
     }];
 }
 

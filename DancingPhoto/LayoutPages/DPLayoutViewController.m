@@ -9,7 +9,15 @@
 #import "DPLayoutViewController.h"
 #import "UIView+ColorOfPoint.h"
 
-@interface DPLayoutViewController ()
+#import <AVFoundation/AVFoundation.h>
+
+@interface DPLayoutViewController (){
+    
+    NSTimer *_recordTimer;
+    
+    AVAudioPlayer *_audioPlayer;
+}
+
 
 @end
 
@@ -18,15 +26,43 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UILabel *t = [UILabel new];
-    if (self.pageType.length > 0) {
-        t.text = self.pageType;
-    } else {
-        t.text = @"demo 2 83";
-    }
-    [self.view addSubview:t];
-    t.frame = CGRectMake(0, 100, 200, 30);
+
+}
+
+#pragma mark - play music
+- (void)startWave
+{
     
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Derezzed-16432761" ofType:@"mp3"];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    NSLog(@"url is %@", url);
+    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    NSLog(@"player is %@", _audioPlayer);
+    // LiMo Linux Mobile
+    
+    [_audioPlayer setMeteringEnabled:YES];
+    // 通过setMeteringEnabled:YES] 开启波形
+    [_audioPlayer prepareToPlay];
+    [_audioPlayer play];
+    
+
+    [NSTimer scheduledTimerWithTimeInterval:0.3f target:self selector:@selector(refreshWaveView:) userInfo:nil repeats:YES];
+}
+
+
+#define XMAX    20.0f
+- (void) refreshWaveView:(id) arg{
+    [_audioPlayer updateMeters];
+
+    // 通知audioPlayer 说我们要去平均波形和最大波形
+
+    float aa = pow(10, (0.05 * [_audioPlayer averagePowerForChannel:0]));
+    float pp = pow(10, (0.05 * [_audioPlayer peakPowerForChannel:0]));
+    
+    NSLog(@"average2 is %f peak %f", aa, pp);
+    if ([self respondsToSelector:@selector(onMusicPowerChange:peak:)]) {
+        [self onMusicPowerChange:aa peak:pp];
+    }
 }
 
 // 保存了图片在平面的隔行扫描后的结果，是个二位数组
@@ -70,5 +106,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)onMusicPowerChange:(float)average peak:(float)peak {
+    //
+    NSLog(@"not yet");
+}
+
+
 
 @end

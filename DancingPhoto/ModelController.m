@@ -9,6 +9,7 @@
 #import "ModelController.h"
 #import "DPLayoutViewController.h"
 #import "DPLayoutFrameController.h"
+#import "DPWelcomeViewController.h"
 /*
  A controller object that manages a simple model -- a collection of month names.
  
@@ -24,6 +25,8 @@ NSString * const kPageTypeAnchor = @"kPageTypeAnchor";
 NSString * const kPageTypeVFL = @"kPageTypeVFL";
 NSString * const kPageTypeMasonry = @"kPageTypeMasonry";
 
+
+NSString * const kPageWelcome = @"kPageWelcome";
 @interface ModelController ()
 
 @property (readonly, strong, nonatomic) NSArray *pageData;
@@ -35,7 +38,7 @@ NSString * const kPageTypeMasonry = @"kPageTypeMasonry";
     self = [super init];
     if (self) {
         // Create the data model.
-        _pageData = @[kPageTypeFrame, kPageTypeAnchor, kPageTypeVFL, kPageTypeMasonry];
+        _pageData = @[kPageWelcome, kPageTypeFrame, kPageTypeAnchor, kPageTypeVFL, kPageTypeMasonry];
     }
     return self;
 }
@@ -48,7 +51,10 @@ NSString * const kPageTypeMasonry = @"kPageTypeMasonry";
 
     // Create a new view controller and pass suitable data.
     NSString *pageType = self.pageData[index];
-    if (pageType == kPageTypeFrame) {
+    
+    if (pageType == kPageWelcome) {
+        return [DPWelcomeViewController new];
+    }else if (pageType == kPageTypeFrame) {
         return [DPLayoutFrameController new];
     }
     

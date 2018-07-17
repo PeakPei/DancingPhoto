@@ -7,8 +7,18 @@
 //
 
 #import "AppDelegate.h"
+#import "SEFPS.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) UIWindow *fpsWin;
+
+@property (nonatomic, strong) SEFPS *fps;
+
+/**
+ 记录上次拖动的位移，两者做差值，来计算此次拖动的距离。
+ */
+@property (nonatomic, assign) CGPoint lastOffset;
 
 @end
 
@@ -17,7 +27,43 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    UIWindow *window = [[UIWindow alloc] initWithFrame: CGRectMake(15, 150, 35, 20.f)];
+    UIViewController *vc = [[UIViewController alloc] init];
+    window.rootViewController = vc;
+    window.backgroundColor = [UIColor clearColor];
+    window.windowLevel = UIWindowLevelStatusBar + 14;
+    window.hidden = NO;
+    self.fpsWin = window;
+    
+    SEFPS *fps = [SEFPS new];
+    [fps showInWindow: window];
+    
+    self.fps = fps;
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleDragFpsWin:)];//创建手势
+    window.userInteractionEnabled = YES;
+    [window addGestureRecognizer:pan];
+    
     return YES;
+}
+
+- (void)handleDragFpsWin:(UIPanGestureRecognizer *)pan
+{
+    if (pan.state == UIGestureRecognizerStateBegan) {
+        self.lastOffset = CGPointZero;
+    }
+    // 注意：这里的 offset 是相对于在手势开始之前的位置作为基准，和当前手势做差值得出来的位移
+    CGPoint offset = [pan translationInView:self.fpsWin];
+    //    SELog(@"drag %@", NSStringFromCGPoint(offset));
+    CGRect newFrame = CGRectOffset(self.fpsWin.frame, offset.x - self.lastOffset.x, offset.y - self.lastOffset.y);
+    //    SELog(@"drag new %@", NSStringFromCGRect(newFrame));
+    self.fpsWin.frame = newFrame;
+    
+    self.lastOffset = offset;
+    
+    if (pan.state == UIGestureRecognizerStateEnded || pan.state == UIGestureRecognizerStateCancelled || pan.state == UIGestureRecognizerStateFailed) {
+        self.lastOffset = CGPointZero;
+    }
 }
 
 

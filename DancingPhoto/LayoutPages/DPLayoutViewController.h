@@ -19,6 +19,8 @@ static NSInteger yStepPixel = 3;
 
 @property (nonatomic, strong) NSString *pageType;
 
+- (void)startWave;
+
 // 保存了图片在平面的隔行扫描后的结果，是个二位数组
 + (NSArray<NSArray *> *)colorMatrix;
 
