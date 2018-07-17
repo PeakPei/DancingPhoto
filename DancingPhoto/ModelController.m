@@ -10,6 +10,10 @@
 #import "DPLayoutViewController.h"
 #import "DPLayoutFrameController.h"
 #import "DPWelcomeViewController.h"
+#import "DPLayoutAnchorController.h"
+#import "DPLayoutMansonryController.h"
+#import "DPLayoutVFLViewController.h"
+
 /*
  A controller object that manages a simple model -- a collection of month names.
  
@@ -25,11 +29,18 @@ NSString * const kPageTypeAnchor = @"kPageTypeAnchor";
 NSString * const kPageTypeVFL = @"kPageTypeVFL";
 NSString * const kPageTypeMasonry = @"kPageTypeMasonry";
 
-
 NSString * const kPageWelcome = @"kPageWelcome";
-@interface ModelController ()
 
+@interface ModelController ()
+{
+    DPWelcomeViewController *_welcomePage;
+    DPLayoutFrameController *_framePage;
+    DPLayoutAnchorController *_anchorPage;
+    DPLayoutVFLViewController *_vflPage;
+    DPLayoutMansonryController *_mansonryPage;
+}
 @property (readonly, strong, nonatomic) NSArray *pageData;
+
 @end
 
 @implementation ModelController
@@ -53,9 +64,30 @@ NSString * const kPageWelcome = @"kPageWelcome";
     NSString *pageType = self.pageData[index];
     
     if (pageType == kPageWelcome) {
-        return [DPWelcomeViewController new];
-    }else if (pageType == kPageTypeFrame) {
-        return [DPLayoutFrameController new];
+        if (_welcomePage == nil) {
+            _welcomePage = [DPWelcomeViewController new];
+        }
+        return _welcomePage;
+    } else if (pageType == kPageTypeFrame) {
+        if (_framePage == nil) {
+            _framePage = [DPLayoutFrameController new];
+        }
+        return _framePage;
+    } else if (pageType == kPageTypeAnchor){
+        if (_anchorPage == nil) {
+            _anchorPage = [DPLayoutAnchorController new];
+        }
+        return _anchorPage;
+    } else if (pageType == kPageTypeVFL){
+        if (_vflPage == nil) {
+            _vflPage = [DPLayoutVFLViewController new];
+        }
+        return _vflPage;
+    } else if (pageType == kPageTypeMasonry){
+        if (_mansonryPage == nil) {
+            _mansonryPage = [DPLayoutMansonryController new];
+        }
+        return _mansonryPage;
     }
     
     DPLayoutViewController *vc = [DPLayoutViewController new];

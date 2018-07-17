@@ -26,7 +26,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    if (self.pageType.length > 0) {
+        UILabel *t = [UILabel new];
+        t.text = self.pageType;
+        [self.view addSubview:t];
+        t.backgroundColor = [UIColor whiteColor];
+        [t sizeToFit];
+        
+        [t mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.view.mas_top).mas_offset(30);
+            make.centerX.mas_equalTo(self.view.mas_centerX);
+        }];
+    }
+    
+    NSLog(@"View name = %@", self.pageType);
 }
 
 #pragma mark - play music

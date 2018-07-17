@@ -1,21 +1,21 @@
 //
-//  DPLayoutFrameController.m
+//  DPLayoutAnchorController.m
 //  DancingPhoto
 //
-//  Created by liang on 2018/7/16.
+//  Created by liang on 2018/7/17.
 //  Copyright © 2018 liang. All rights reserved.
 //
 
-#import "DPLayoutFrameController.h"
+#import "DPLayoutAnchorController.h"
 
-@interface DPLayoutFrameController ()
+@interface DPLayoutAnchorController ()
 
 @end
 
-@implementation DPLayoutFrameController
+@implementation DPLayoutAnchorController
 
 - (void)viewDidLoad {
-    self.pageType = kPageTypeFrame;
+    self.pageType = kPageTypeAnchor;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSArray<NSArray *> *colorMatrix = [self.class colorMatrix];
@@ -46,7 +46,6 @@
         for (NSInteger i = 0; i < xLen; i++) {
             // 第一种使用 frame 来布局
             UIView *dot = [UIView new];
-            dot.frame = CGRectMake(xStartOffset + (xGap + xStep) * i, yStartOffset + yIdx * (yStep + yGap), xStep, yStep);
             
             dot.backgroundColor = [xColors objectAtIndex:i];
             // 用投机取巧的方式保存最原始的 center；
@@ -55,50 +54,28 @@
             [dots addObject:dot];
             
             [self.view addSubview:dot];
+            // 使用 anchor 布局
+//                        dot.frame = CGRectMake(xStartOffset + (xGap + xStep) * i, yStartOffset + yIdx * (yStep + yGap), xStep, yStep);
+            dot.translatesAutoresizingMaskIntoConstraints = NO;
+            [dot.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:xStartOffset + (xGap + xStep) * i].active = YES;
+            [dot.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:yStartOffset + yIdx * (yStep + yGap)].active = YES;
+            [dot.widthAnchor constraintEqualToConstant:xStep].active = YES;
+            [dot.heightAnchor constraintEqualToConstant:xStep].active = YES;
+            
         }
     }];
     
     NSLog(@"画图结束，耗时：%f", [[NSDate date] timeIntervalSince1970] - startTime);
-    
-//    //  播放按钮
-//    UIButton *play = [UIButton new];
-//    [play setTitle:@"播放动画" forState:UIControlStateNormal];
-//    [play setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-//    play.backgroundColor = [UIColor whiteColor];
-//    play.frame = CGRectMake(15, 80, 0, 0);
-//    [play sizeToFit];
-//    [self.view addSubview:play];
-//
-//    [play addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-#pragma mark - event
+/*
+#pragma mark - Navigation
 
-- (void)play:(id)sender
-{
-    [self startWave];
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
-
-static NSInteger kActiveGroupSize = 200;
-static NSInteger kActiveOffset = 0;
-- (void)onMusicPowerChange:(float)average peak:(float)peak
-{
-    
-    CGFloat amplitudeDistance = 20.f;
-    kActiveOffset += kActiveGroupSize;
-    NSInteger len = self.dots.count;
-    
-    NSInteger offset = kActiveOffset % len;
-    kActiveOffset = offset;
-    
-    [[self.dots subarrayWithRange:NSMakeRange(offset, MIN(kActiveGroupSize, len - offset))]  enumerateObjectsUsingBlock:^(UIView * _Nonnull dot, NSUInteger idx, BOOL * _Nonnull stop) {
-       // 只做 y 轴上的震荡
-        NSArray *accArr = [dot.accessibilityValue componentsSeparatedByString:@"-"];
-        if (accArr.count == 2) {
-            CGPoint original = CGPointMake([[accArr firstObject] floatValue], [[accArr lastObject] floatValue]);
-            dot.center = CGPointMake(original.x, original.y + amplitudeDistance * peak);
-        }
-    }];
-}
+*/
 
 @end

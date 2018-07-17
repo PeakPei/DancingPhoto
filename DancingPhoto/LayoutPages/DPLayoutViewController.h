@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DPLayoutPageProtocol.h"
+#import <Masonry/Masonry.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,8 @@ static NSInteger xStepPixel = 3;
 static NSInteger yStepPixel = 3;
 
 @interface DPLayoutViewController : UIViewController <DPLayoutPageProtocol>
+
+@property (nonatomic, strong) NSArray<UIView *> *dots;
 
 @property (nonatomic, strong) NSString *pageType;
 
